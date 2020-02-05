@@ -1,18 +1,43 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+  <v-container>
+    <v-layout
+      text-center
+      wrap
+    >
+      
+      <v-flex mb-4>
+        <h1 class="display-2 font-weight-bold mb-3">
+          MUSIC SEARCH
+        </h1>
+        <v-text-field
+        v-model="keyword" 
+        v-bind:counter="100" 
+        label="アーティスト名を入力して検索してみよう" 
+        required>
+          
+        </v-text-field>
+        <v-btn @click="search">検索</v-btn>
+       
+      </v-flex>
+
+     
+    </v-layout>
+  </v-container>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
+
 
 export default {
-  name: 'home',
-  components: {
-    HelloWorld
+  data(){
+    return {
+      keyword:'',
+    }
+  },
+  methods:{
+    search(){
+      this.$router.push(`/result/${this.keyword}`)
+    }
   }
 }
 </script>
